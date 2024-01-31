@@ -9,6 +9,7 @@ OPTION(BUILD_SHARED_LIBS "Build shared library" ON)
 find_package(CXX11 REQUIRED)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CXX11_FLAGS}")
 
+
 if(${CMAKE_C_COMPILER_ID} MATCHES "Clang" OR ${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
 	set(CMAKE_COMPILER_IS_CLANG TRUE)
 endif()
@@ -66,6 +67,7 @@ if(MINGW)
 endif()
 
 set(libdshowcapture_SOURCES
+    source/main.cpp
 	source/capture-filter.cpp
 	source/output-filter.cpp
 	source/dshowcapture.cpp
@@ -98,11 +100,13 @@ set(libdshowcapture_HEADERS
 
 add_library(libdshowcapture
 	${libdshowcapture_SOURCES}
-	${libdshowcapture_HEADERS})
+	${libdshowcapture_HEADERS} "source/main.cpp" "source/main.hpp")
+
 
 target_link_libraries(libdshowcapture PRIVATE
 	setupapi
 	strmiids
 	ksuser
 	winmm
-	wmcodecdspuuid)
+	wmcodecdspuuid
+	)
