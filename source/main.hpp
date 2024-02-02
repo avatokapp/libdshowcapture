@@ -2,7 +2,7 @@
 #include "../dshowcapture.hpp"
 #include <Windows.h>
 #include <sstream>
-
+#define USE_FOR_DLLS = true;
 #ifdef USE_FOR_DLLS
 #define USE_FOR_DLL __declspec(dllexport)
 #else

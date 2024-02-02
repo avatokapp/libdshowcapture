@@ -6,6 +6,7 @@
 #include <regex>
 #include <iomanip>
 
+#define USE_FOR_DLLS = true;
 
 #ifdef USE_FOR_DLLS
 #define USE_FOR_DLL __declspec(dllexport)
